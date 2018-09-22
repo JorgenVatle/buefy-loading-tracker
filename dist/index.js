@@ -19,8 +19,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var vue_1 = require("vue");
-var vue_mixin_decorator_1 = require("vue-mixin-decorator");
+var vue_property_decorator_1 = require("vue-property-decorator");
 var defaultKey = 'global';
 var defaultState = {};
 defaultState[defaultKey] = false;
@@ -73,8 +72,8 @@ var BuefyLoadingTracker = /** @class */ (function (_super) {
         };
     };
     BuefyLoadingTracker = __decorate([
-        vue_mixin_decorator_1.Mixin
+        vue_property_decorator_1.Component
     ], BuefyLoadingTracker);
     return BuefyLoadingTracker;
-}(vue_1.default));
+}(vue_property_decorator_1.Vue));
 exports.default = BuefyLoadingTracker;

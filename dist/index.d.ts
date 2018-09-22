@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { Vue } from 'vue-property-decorator';
 export default class BuefyLoadingTracker extends Vue {
     /**
      * Loading states
