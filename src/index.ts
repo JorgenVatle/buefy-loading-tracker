@@ -3,7 +3,7 @@ const defaultKey = 'global';
 
 export default Vue.extend({
 
-    data() {
+    data(): { loading: any } {
         return {
             loading: {
                 global: false,
