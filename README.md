@@ -35,27 +35,27 @@ Import the loading tracker:
 ```
 
 Starting and stopping the default loader:
-```ecmascript 6
-    // Start loading
-    this.startLoading();
+```es6
+// Start loading
+this.startLoading();
 
-    // Stop loading
-    this.stopLoading();
-    
-    // Check loading
-    this.isLoading();
+// Stop loading
+this.stopLoading();
+
+// Check loading
+this.isLoading();
 ```
 
 Starting and stopping named loaders:
-```ecmascript 6
-    // Start loading
-    this.startLoading('named-loader');
+```es6
+// Start loading
+this.startLoading('named-loader');
 
-    // Stop loading
-    this.stopLoading('named-loader');
-    
-    // Check loading
-    this.isLoading('named-loader');
+// Stop loading
+this.stopLoading('named-loader');
+
+// Check loading
+this.isLoading('named-loader');
 ```
 
 
