@@ -1,6 +1,7 @@
+import Vue from 'vue';
 const defaultKey = 'global';
 
-export default {
+export default Vue.extend({
 
     data() {
         return {
@@ -50,4 +51,4 @@ export default {
         }
     }
 
-}
+});
