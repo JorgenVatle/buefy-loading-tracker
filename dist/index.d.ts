@@ -1,7 +1,9 @@
 import Vue from 'vue';
-declare const _default: import("vue/types/vue").VueConstructor<{
+export default class BuefyLoadingTracker extends Vue {
+    /**
+     * Loading states
+     */
     loading: any;
-} & {
     /**
      * Checks if the given tracker is loading.
      *
@@ -13,13 +15,13 @@ declare const _default: import("vue/types/vue").VueConstructor<{
      *
      * @param trackerName
      */
-    startLoading(trackerName?: string): true;
+    startLoading(trackerName?: string): boolean;
     /**
      * Stops the loading state for the given tracker.
      *
      * @param trackerName
      */
-    stopLoading(trackerName?: string): false;
+    stopLoading(trackerName?: string): boolean;
     /**
      * Bulma loading class for the given tracker.
      *
@@ -28,5 +30,4 @@ declare const _default: import("vue/types/vue").VueConstructor<{
     loadingClass(trackerName?: string): {
         'is-loading': any;
     };
-} & Record<never, any> & Vue>;
-export default _default;
+}
