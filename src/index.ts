@@ -1,11 +1,10 @@
-import Vue from 'vue';
-import { Mixin } from "vue-mixin-decorator";
+import { Vue, Component } from 'vue-property-decorator';
 
 const defaultKey = 'global';
 const defaultState: any = {};
 defaultState[defaultKey] = false;
 
-@Mixin
+@Component
 export default class BuefyLoadingTracker extends Vue {
 
     /**
