@@ -24,5 +24,8 @@
   "homepage": "https://github.com/JorgenVatle/buefy-loading-tracker#readme",
   "dependencies": {
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "typescript": "^3.0.3"
   }
 }
