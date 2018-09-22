@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "prepublish": "npm run build",
-    "postpublish": "git commit dist -m \"Build package dist directory.\" && git push"
+    "preversion": "npm run build && git commit dist -m \"Build package dist directory.\"",
+    "postpublish": "git push"
   },
   "repository": {
     "type": "git",
