@@ -1,4 +1,4 @@
-# Buefy-Loading-Tracker
+    # Buefy-Loading-Tracker
 
 A simple Vue mixin for tracking the loading states of multiple [Bulma](https://bulma.io/) or 
 [Buefy](https://buefy.github.io/#/) components or elements.
@@ -14,12 +14,11 @@ Add the loading tracker to the component you want to control:
 ```vue
 <template>
     <div>
-        <div>
-            <button class="is-button" :class="loadingClass()"></button>
-        </div>
-        <div>
-            <button class="is-button" :class="loadingClass('named-loader')"></button>
-        </div>    
+        <!-- Default loading state -->
+        <button class="is-button" :class="loadingClass()"></button>
+        
+        <!-- Named loading state -->
+       <button class="is-button" :class="loadingClass('named-loader')"></button>
     </div>
 </template>
 ```
@@ -35,7 +34,7 @@ Import the loading tracker:
 </script>
 ```
 
-Starting and stopping the loader:
+Starting and stopping the default loader:
 ```ecmascript 6
     // Start loading
     this.startLoading();
@@ -47,7 +46,7 @@ Starting and stopping the loader:
     this.isLoading();
 ```
 
-Starting and stopping the loader for named loading states:
+Starting and stopping named loaders:
 ```ecmascript 6
     // Start loading
     this.startLoading('named-loader');
