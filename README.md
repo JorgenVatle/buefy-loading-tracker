@@ -1,4 +1,4 @@
-    # Buefy-Loading-Tracker
+# Buefy-Loading-Tracker
 
 A simple Vue mixin for tracking the loading states of multiple [Bulma](https://bulma.io/) or 
 [Buefy](https://buefy.github.io/#/) components or elements.
