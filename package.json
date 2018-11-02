@@ -28,10 +28,10 @@
   "homepage": "https://github.com/JorgenVatle/buefy-loading-tracker#readme",
   "dependencies": {
     "vue": "^2.5.17",
-    "vue-class-component": "^6.2.0",
-    "vue-property-decorator": "^7.1.1"
+    "vue-class-component": "^6.2.0"
   },
   "devDependencies": {
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "vue-property-decorator": "^7.2.0"
   }
 }
