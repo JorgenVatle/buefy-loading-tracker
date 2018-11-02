@@ -1,6 +1,6 @@
 {
   "name": "buefy-loading-tracker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Vue mixin for tracking loading states of multiple named components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
