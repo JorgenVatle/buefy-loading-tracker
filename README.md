@@ -58,6 +58,29 @@ this.stopLoading('named-loader');
 this.isLoading('named-loader');
 ```
 
+(Optional) If you need to use some Vuex controlled loading state, define it using a `loadingState` computed property.
+```vue
+<template>
+    <!-- Loading state from Vuex store -->
+   <button class="is-button" :class="loadingClass('someLoadingState')"></button>
+</template>
+<script>
+import LoadingTracker from 'buefy-loading-tracker';
+import { mapState } from 'vuex';
+
+export default {
+    mixins: [LoadingTracker],
+    computed: {
+        loadingState() {
+            return {
+                ...mapState(['someLoadingState'])
+            }
+        }
+    }
+}
+</script>
+```
+
 
 
 
