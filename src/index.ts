@@ -13,12 +13,20 @@ export default class BuefyLoadingTracker extends Vue {
     loading = defaultState;
 
     /**
+     * Overridable computed loading states.
+     * Great for mapping Vuex states to.
+     */
+    get loadingState(): any {
+        return {}
+    }
+
+    /**
      * Checks if the given tracker is loading.
      *
      * @param trackerName
      */
     isLoading(trackerName: string = defaultKey) {
-        return this.loading[trackerName];
+        return this.loading[trackerName] || this.loadingState[trackerName];
     }
 
     /**
