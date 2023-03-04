@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import useLoadingTracker, { LoadingTracker } from './composable';
 
 const defaultKey = 'global';
 const defaultState: Record<string, boolean> = {};
@@ -6,20 +7,22 @@ defaultState[defaultKey] = false;
 
 const Mixin = {
     
-    data: {
-        /**
-         * Loading state store
-         */
-        loading: defaultState,
+    setup() {
+        return {
+            LoadingTracker: useLoadingTracker(),
+        }
     },
     
-    /**
-     * Overridable computed loading states.
-     * Great for mapping Vuex states to.
-     */
-    get loadingState(): any {
-        return {}
+    computed: {
+        /**
+         * Overridable computed loading states.
+         * Great for mapping Vuex states to.
+         */
+        loadingState() {
+            return {};
+        }
     },
+    
     
     methods: {
         /**
@@ -27,8 +30,8 @@ const Mixin = {
          *
          * @param trackerName
          */
-        isLoading(this: typeof Mixin & {}, trackerName: string = defaultKey) {
-            return this.loading[trackerName] || this.loadingState[trackerName];
+        isLoading(this: MixinThisType, trackerName: string = defaultKey) {
+            return this.LoadingTracker.isLoading(trackerName) || this.loadingState[trackerName];
         },
     
         /**
@@ -36,8 +39,8 @@ const Mixin = {
          *
          * @param trackerName
          */
-        startLoading(trackerName: string = defaultKey) {
-            return this.$set(this.loading, trackerName, true);
+        startLoading(this: MixinThisType, trackerName: string = defaultKey) {
+            return this.LoadingTracker.start(trackerName);
         },
     
         /**
@@ -45,8 +48,8 @@ const Mixin = {
          *
          * @param trackerName
          */
-        stopLoading(trackerName: string = defaultKey) {
-            return this.$set(this.loading, trackerName, false);
+        stopLoading(this: MixinThisType, trackerName: string = defaultKey) {
+            return this.LoadingTracker.stop(trackerName);
         },
     
         /**
@@ -54,17 +57,13 @@ const Mixin = {
          *
          * @param trackerName
          */
-        loadingClass(trackerName: string = defaultKey) {
-            return {
-                'is-loading': this.isLoading(trackerName),
-            }
+        loadingClass(this: MixinThisType, trackerName: string = defaultKey) {
+            return this.LoadingTracker.class(trackerName);
         }
     },
     
 }
 
-export default class BuefyLoadingTracker extends Vue {
+type MixinThisType = { LoadingTracker: LoadingTracker, loadingState: Record<string, boolean> } & Vue;
 
-
-
-}
+export default Mixin;
