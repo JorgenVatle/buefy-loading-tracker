@@ -37,6 +37,29 @@ Import the loading tracker:
 </script>
 ```
 
+## Example Usage (Composition API)
+```vue
+<template>
+    <div>
+        <!-- Named loading state -->
+       <button class="is-button" :class="loading.class('posts')" @click="createPost()">
+           Start Loading
+       </button>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { useLoadingTracker } from 'buefy-loading-tracker';
+
+const loading = useLoadingTracker();
+
+function createPost() {
+    loading.start('posts');
+    setTimeout(() => loading.stop('posts'), 2000); // wait 2 seconds and stop the loading state.
+}
+</script>
+```
+
 Starting and stopping the default loader:
 ```es6
 // Start loading
