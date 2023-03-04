@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import useLoadingTracker, { LoadingTracker } from './composable';
+import useLoadingTracker from './composable';
 
 const defaultKey = 'global';
 const defaultState: Record<string, boolean> = {};
