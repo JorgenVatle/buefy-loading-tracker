@@ -1,31 +1,35 @@
 import { reactive, set } from 'vue';
 
-export default function useLoadingTracker() {
-    const store = reactive<Record<string, boolean>>({});
+type LoadingStore = Record<string, boolean>;
+
+class LoadingTracker {
+    constructor(
+        /**
+         * Reactive store for the current loading tracker instance.
+         */
+        public readonly store: LoadingStore
+    ) {}
     
-    function isLoading(trackerName: string) {
-        return store[trackerName];
+    public isLoading(trackerName: string) {
+        return this.store[trackerName];
     }
     
-    function startLoading(trackerName: string) {
-        set(store, trackerName, true);
+    public start(trackerName: string) {
+        set(this.store, trackerName, true);
     }
     
-    function stopLoading(trackerName: string) {
-        set(store, trackerName, false);
+    public stop(trackerName: string) {
+        set(this.store, trackerName, false);
     }
     
-    function loadingClass(trackerName: string) {
+    public class(trackerName: string) {
         return {
-            'is-loading': isLoading(trackerName),
+            'is-loading': this.isLoading(trackerName),
         }
     }
     
-    return {
-        store,
-        isLoading,
-        startLoading,
-        stopLoading,
-        loadingClass,
-    }
+}
+
+export default function useLoadingTracker() {
+    return new LoadingTracker(reactive({}));
 }
