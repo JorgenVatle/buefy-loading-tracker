@@ -64,6 +64,6 @@ const Mixin = {
     
 }
 
-type MixinThisType = { LoadingTracker: LoadingTracker, loadingState: Record<string, boolean> } & Vue;
+type MixinThisType = any;
 
 export default Mixin;
