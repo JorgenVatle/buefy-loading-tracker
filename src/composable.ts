@@ -2,7 +2,7 @@ import { reactive, set } from 'vue';
 
 type LoadingStore = Record<string, boolean>;
 
-class LoadingTracker {
+export class LoadingTracker {
     constructor(
         /**
          * Reactive store for the current loading tracker instance.
@@ -27,7 +27,6 @@ class LoadingTracker {
             'is-loading': this.isLoading(trackerName),
         }
     }
-    
 }
 
 export default function useLoadingTracker() {
