@@ -3,12 +3,15 @@
 A simple Vue mixin for tracking the loading states of multiple [Bulma](https://bulma.io/) or 
 [Buefy](https://buefy.github.io/#/) components or elements.
 
+## Prerequisites
+- Vue 2.7 or Vue 3.
+
 ## Installation
 ```bash
 npm install --save buefy-loading-tracker
 ```
 
-## Usage
+## Usage (Options API)
 
 Add the loading tracker to the component you want to control:
 ```vue
