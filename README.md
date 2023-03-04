@@ -108,6 +108,16 @@ function createPost() {
 </script>
 ```
 
+Available methods:
+```ts
+const loading = useLoadingTracker();
+
+loading.start('create-post-form'); // Start loading state with an id for later reference.
+loading.stop('create-post-form'); // Stop loading state with the same id.
+
+// Check if loading state with the same id is active.
+loading.is('create-post-form'); // -> boolean 
+```
 
 ## License
 MIT - [View License](https://github.com/JorgenVatle/buefy-loading-tracker/blob/master/LICENSE)
