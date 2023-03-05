@@ -22,7 +22,7 @@ npm install --save buefy-loading-tracker
         <button class="is-button"
                 :class="
                 /* Reactively returns 'is-loading' depending on the loading state  */
-                loading.class('create-post-form')"
+                loading.class('createPostForm')"
                 @click="createPost()">
             Start Loading
         </button>
@@ -42,23 +42,49 @@ async function createPost() {
 ```
 
 ## Available methods (Composition API)
-```ts
-const loading = useLoadingTracker();
-
-// Utility for use within your component template. Apply on buttons to get 
-// a reactive Buefy/Bulma 'is-loading' CSS class
-loading.class('my-button'); // -> 'is-loading' | ''
-
-// Start the loading state for "my-button", applying the 'is-loading' CSS class
-loading.start('my-button');
-
-// Stops the loading state for "my-button", removing the 'is-loading' CSS class.
-loading.stop('my-button');
-
-// Check if the loading state for "my-button" is active. Useful if you need to show 
-// or hide certain elements depending on whether 'my-button' is loading or not.
-loading.is('my-button'); // -> boolean 
+#### `loading.class(name: string)`
+```vue
+<template>
+    <button class="is-button" :class="loading.class('myButton')">
+        My Button
+    </button>
+</template>
 ```
+Returns a reactive CSS class that can be applied to a component or element. The class will be 
+`'is-loading'` when the loading state is active, and an empty string when the loading state is inactive.
+
+#### `loading.start(name: string)`
+```vue
+<template>
+    <button class="button" @click="loading.start('myButton')">
+        Start Loading
+    </button>
+</template>
+```
+Starts the loading state for `my-button`. The loading state will be active until `loading.stop(name)` is called.
+
+#### `loading.stop(name: string)`
+```vue
+<template>
+    <button class="button" @click="loading.stop('myButton')">
+        Stop Loading
+    </button>
+</template>
+```
+Stops the loading state for `myButton`. The loading state will be inactive until `loading.start(name)` is called.
+
+#### `loading.is(name: string)`
+```vue
+<template>
+    <h1 class="title" v-if="loading.isLoading('myButton')">
+        Loading...
+    </h1>
+    <h1 v-else>
+        Click the button to start loading.
+    </h1>
+</template>
+```
+Returns a reactive boolean indicating whether the loading state for `myButton` is active or not.
 
 ## Usage (Options API)
 
