@@ -3,12 +3,15 @@
 A simple Vue mixin for tracking the loading states of multiple [Bulma](https://bulma.io/) or 
 [Buefy](https://buefy.github.io/#/) components or elements.
 
+## Prerequisites
+- Vue 2.7 or Vue 3.
+
 ## Installation
 ```bash
 npm install --save buefy-loading-tracker
 ```
 
-## Usage
+## Usage (Options API)
 
 Add the loading tracker to the component you want to control:
 ```vue
@@ -23,7 +26,7 @@ Add the loading tracker to the component you want to control:
 </template>
 ```
 
-Import the loading tracker:
+Import the loading tracker as a mixin:
 ```vue
 <script>
     import LoadingTracker from 'buefy-loading-tracker';
@@ -82,7 +85,39 @@ export default {
 ```
 
 
+## Example Usage (Composition API)
+```vue
+<template>
+    <div>
+        <!-- Named loading state -->
+       <button class="is-button" :class="loading.class('posts')" @click="createPost()">
+           Start Loading
+       </button>
+    </div>
+</template>
 
+<script lang="ts" setup>
+import { useLoadingTracker } from 'buefy-loading-tracker';
+
+const loading = useLoadingTracker();
+
+function createPost() {
+    loading.start('posts');
+    setTimeout(() => loading.stop('posts'), 2000); // wait 2 seconds and stop the loading state.
+}
+</script>
+```
+
+Available methods:
+```ts
+const loading = useLoadingTracker();
+
+loading.start('create-post-form'); // Start loading state with an id for later reference.
+loading.stop('create-post-form'); // Stop loading state with the same id.
+
+// Check if loading state with the same id is active.
+loading.is('create-post-form'); // -> boolean 
+```
 
 ## License
 MIT - [View License](https://github.com/JorgenVatle/buefy-loading-tracker/blob/master/LICENSE)
