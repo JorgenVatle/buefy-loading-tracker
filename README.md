@@ -6,9 +6,58 @@ A simple Vue mixin for tracking the loading states of multiple [Bulma](https://b
 ## Prerequisites
 - Vue 2.7 or Vue 3.
 
+## Features
+- Easily track loading states of multiple components or elements within the Bulma or Buefy UI framework.
+- Supports both the Options API and the Composition API.
+
 ## Installation
 ```bash
 npm install --save buefy-loading-tracker
+```
+
+## Example Usage (Composition API)
+```vue
+<template>
+    <div>
+        <button class="is-button"
+                :class="
+                /* Reactively returns 'is-loading' depending on the loading state  */
+                loading.class('create-post-form')"
+                @click="createPost()">
+            Start Loading
+        </button>
+    </div>
+</template>
+<script setup lang="ts">
+import { useLoadingTracker } from 'buefy-loading-tracker';
+import { someAsyncFunction } from './somewhere-in-your-app';
+
+const loading = useLoadingTracker();
+
+async function createPost() {
+    loading.start('create-post-form');
+    await someAsyncFunction().finally(() => loading.stop('create-post-form'));
+}
+</script>
+```
+
+## Available methods (Composition API)
+```ts
+const loading = useLoadingTracker();
+
+// Utility for use within your component template. Apply on buttons to get 
+// a reactive Buefy/Bulma 'is-loading' CSS class
+loading.class('my-button'); // -> 'is-loading' | ''
+
+// Start the loading state for "my-button", applying the 'is-loading' CSS class
+loading.start('my-button');
+
+// Stops the loading state for "my-button", removing the 'is-loading' CSS class.
+loading.stop('my-button');
+
+// Check if the loading state for "my-button" is active. Useful if you need to show 
+// or hide certain elements depending on whether 'my-button' is loading or not.
+loading.is('my-button'); // -> boolean 
 ```
 
 ## Usage (Options API)
@@ -82,41 +131,6 @@ export default {
     }
 }
 </script>
-```
-
-
-## Example Usage (Composition API)
-```vue
-<template>
-    <div>
-        <!-- Named loading state -->
-       <button class="is-button" :class="loading.class('posts')" @click="createPost()">
-           Start Loading
-       </button>
-    </div>
-</template>
-
-<script lang="ts" setup>
-import { useLoadingTracker } from 'buefy-loading-tracker';
-
-const loading = useLoadingTracker();
-
-function createPost() {
-    loading.start('posts');
-    setTimeout(() => loading.stop('posts'), 2000); // wait 2 seconds and stop the loading state.
-}
-</script>
-```
-
-Available methods:
-```ts
-const loading = useLoadingTracker();
-
-loading.start('create-post-form'); // Start loading state with an id for later reference.
-loading.stop('create-post-form'); // Stop loading state with the same id.
-
-// Check if loading state with the same id is active.
-loading.is('create-post-form'); // -> boolean 
 ```
 
 ## License
