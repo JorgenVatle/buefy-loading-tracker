@@ -6,7 +6,7 @@ defaultState[defaultKey] = false;
 
 const Mixin = {
     
-    setup() {
+    data() {
         return {
             LoadingTracker: useLoadingTracker(),
         }
