@@ -29,6 +29,6 @@ export class LoadingTracker<StoreDefaults extends LoadingStore> {
     }
 }
 
-export default function useLoadingTracker<StoreDefaults extends LoadingStore>(defaultValues: StoreDefaults) {
-    return new LoadingTracker(reactive(defaultValues));
+export default function useLoadingTracker<StoreDefaults extends LoadingStore>(defaultValues: StoreDefaults): LoadingTracker<StoreDefaults> {
+    return new LoadingTracker(reactive(defaultValues) as StoreDefaults);
 }
