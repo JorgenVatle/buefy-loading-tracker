@@ -8,7 +8,7 @@ const Mixin = {
     
     data() {
         return {
-            LoadingTracker: useLoadingTracker(),
+            LoadingTracker: useLoadingTracker({}),
         }
     },
     
